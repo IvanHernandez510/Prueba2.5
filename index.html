@@ -1,0 +1,2846 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta name="description"
+        content="Pensamiento ajedrecístico: aprende cómo se juega al ajedrez, practica los movimientos de las piezas, descubre cómo evoluciona la forma de pensar según el nivel Elo y juega contra Stockfish.">
+
+    <title>Pensamiento Ajedrecístico</title>
+
+    <link rel="stylesheet" href="estilos.css">
+
+    <!-- Chess.js -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/chess.js/0.10.3/chess.min.js"></script>
+
+</head>
+
+<body>
+
+    <!-- =====================================================
+         HERO
+    ====================================================== -->
+
+    <header class="hero" id="inicio">
+
+        <nav class="navbar">
+
+            <div class="logo">
+                ♞ <span>Pensamiento</span> Ajedrecístico
+            </div>
+
+            <div class="nav-links">
+
+                <a href="#inicio">Inicio</a>
+
+                <a href="#aprendizaje">Aprender</a>
+
+                <a href="#niveles">Niveles</a>
+
+                <a href="#jugar">Jugar</a>
+
+                <a href="#comparacion">Pensamiento</a>
+
+                <a href="#autor">Autor</a>
+
+                <a href="#calificacion">Calificar</a>
+
+            </div>
+
+        </nav>
+
+
+        <div class="hero-content">
+
+            <div class="hero-text">
+
+                <p class="small-title">
+                    ♟ EL ARTE DE PENSAR
+                </p>
+
+                <h1>
+                    ¿Cómo piensa un
+                    <span>ajedrecista?</span>
+                </h1>
+
+                <p class="hero-description">
+
+                    El ajedrez no consiste solamente en mover piezas.
+                    A medida que aumenta el nivel Elo, también cambia
+                    la forma de analizar, calcular y comprender una posición.
+
+                </p>
+
+                <a href="#aprendizaje" class="main-button">
+                    Aprender a jugar ↓
+                </a>
+
+            </div>
+
+
+            <!-- TABLERO DECORATIVO -->
+
+            <div class="chess-container">
+
+                <div class="decorative-board">
+
+                    <!-- NEGRAS -->
+
+                    <div class="dark black-piece">♜</div>
+                    <div class="light black-piece">♞</div>
+                    <div class="dark black-piece">♝</div>
+                    <div class="light black-piece">♛</div>
+                    <div class="dark black-piece">♚</div>
+                    <div class="light black-piece">♝</div>
+                    <div class="dark black-piece">♞</div>
+                    <div class="light black-piece">♜</div>
+
+                    <div class="light black-piece">♟</div>
+                    <div class="dark black-piece">♟</div>
+                    <div class="light black-piece">♟</div>
+                    <div class="dark black-piece">♟</div>
+                    <div class="light black-piece">♟</div>
+                    <div class="dark black-piece">♟</div>
+                    <div class="light black-piece">♟</div>
+                    <div class="dark black-piece">♟</div>
+
+
+                    <!-- CENTRO -->
+
+                    <div class="dark"></div>
+                    <div class="light"></div>
+                    <div class="dark"></div>
+                    <div class="light"></div>
+                    <div class="dark"></div>
+                    <div class="light"></div>
+                    <div class="dark"></div>
+                    <div class="light"></div>
+
+                    <div class="light"></div>
+                    <div class="dark"></div>
+                    <div class="light"></div>
+                    <div class="dark"></div>
+                    <div class="light"></div>
+                    <div class="dark"></div>
+                    <div class="light"></div>
+                    <div class="dark"></div>
+
+                    <div class="dark"></div>
+                    <div class="light"></div>
+                    <div class="dark"></div>
+                    <div class="light"></div>
+                    <div class="dark"></div>
+                    <div class="light"></div>
+                    <div class="dark"></div>
+                    <div class="light"></div>
+
+                    <div class="light"></div>
+                    <div class="dark"></div>
+                    <div class="light"></div>
+                    <div class="dark"></div>
+                    <div class="light"></div>
+                    <div class="dark"></div>
+                    <div class="light"></div>
+                    <div class="dark"></div>
+
+
+                    <!-- BLANCAS -->
+
+                    <div class="dark white-piece">♙</div>
+                    <div class="light white-piece">♙</div>
+                    <div class="dark white-piece">♙</div>
+                    <div class="light white-piece">♙</div>
+                    <div class="dark white-piece">♙</div>
+                    <div class="light white-piece">♙</div>
+                    <div class="dark white-piece">♙</div>
+                    <div class="light white-piece">♙</div>
+
+                    <div class="light white-piece">♖</div>
+                    <div class="dark white-piece">♘</div>
+                    <div class="light white-piece">♗</div>
+                    <div class="dark white-piece">♕</div>
+                    <div class="light white-piece">♔</div>
+                    <div class="dark white-piece">♗</div>
+                    <div class="light white-piece">♘</div>
+                    <div class="dark white-piece">♖</div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </header>
+
+
+    <!-- =====================================================
+         APRENDER AJEDREZ
+    ====================================================== -->
+
+    <section class="intro" id="aprendizaje">
+
+        <div class="section-title">
+
+            <p>APRENDE DESDE CERO</p>
+
+            <h2>
+                ¿Cómo se juega
+                <span>al ajedrez?</span>
+            </h2>
+
+        </div>
+
+        <p class="intro-text">
+
+            El objetivo del ajedrez es poner al rey enemigo en una
+            situación en la que no pueda escapar del ataque.
+            Esto se llama <strong>jaque mate</strong>.
+
+            Cada pieza tiene una manera diferente de moverse.
+            Selecciona una pieza en los tableros para practicar.
+
+        </p>
+
+    </section>
+
+
+    <!-- =====================================================
+         OBJETIVO DEL JUEGO
+    ====================================================== -->
+
+    <section class="comparison">
+
+        <div class="section-title">
+
+            <p>LO MÁS IMPORTANTE</p>
+
+            <h2>
+                El objetivo es dar
+                <span>jaque mate</span>
+            </h2>
+
+        </div>
+
+
+        <div class="comparison-grid">
+
+            <div class="comparison-box">
+
+                <div class="big-icon">
+                    ♔
+                </div>
+
+                <h3>Protege a tu rey</h3>
+
+                <p>
+                    El rey es la pieza más importante.
+                </p>
+
+                <ul>
+
+                    <li>No puedes dejarlo en jaque.</li>
+
+                    <li>El enroque puede ayudar a protegerlo.</li>
+
+                    <li>Debes prestar atención a las amenazas.</li>
+
+                </ul>
+
+            </div>
+
+
+            <div class="comparison-box highlighted">
+
+                <div class="big-icon">
+                    ♚
+                </div>
+
+                <h3>Ataca al rey enemigo</h3>
+
+                <p>
+                    Busca posiciones donde el rey rival tenga pocas opciones.
+                </p>
+
+                <ul>
+
+                    <li>Busca jaques.</li>
+
+                    <li>Elimina defensores.</li>
+
+                    <li>Calcula las respuestas del rival.</li>
+
+                </ul>
+
+            </div>
+
+
+            <div class="comparison-box">
+
+                <div class="big-icon">
+                    ♟
+                </div>
+
+                <h3>Piensa antes de mover</h3>
+
+                <p>
+                    Una buena jugada comienza con una buena pregunta.
+                </p>
+
+                <ul>
+
+                    <li>¿Qué amenaza mi rival?</li>
+
+                    <li>¿Qué piezas están atacadas?</li>
+
+                    <li>¿Cuál es mi mejor jugada?</li>
+
+                </ul>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- =====================================================
+         PIEZAS
+    ====================================================== -->
+
+    <section class="levels">
+
+        <div class="section-title">
+
+            <p>LAS PIEZAS</p>
+
+            <h2>
+                Aprende cómo se mueve
+                <span>cada pieza</span>
+            </h2>
+
+        </div>
+
+
+        <div class="cards">
+
+            <!-- PEÓN -->
+
+            <article class="card beginner">
+
+                <div class="card-top">
+
+                    <span class="elo">
+                        ♙ PEÓN
+                    </span>
+
+                    <span class="icon">
+                        ♟
+                    </span>
+
+                </div>
+
+                <h3>
+                    El peón
+                </h3>
+
+                <p class="question">
+                    “¿Hacia dónde puede avanzar?”
+                </p>
+
+                <p>
+                    El peón normalmente avanza una casilla hacia delante.
+                    Desde su posición inicial puede avanzar dos casillas.
+                    Para capturar, lo hace en diagonal.
+                </p>
+
+                <div class="thinking">
+
+                    <strong>
+                        Movimiento:
+                    </strong>
+
+                    <span>
+                        Avanza · Captura en diagonal · Puede coronar
+                    </span>
+
+                </div>
+
+            </article>
+
+
+            <!-- CABALLO -->
+
+            <article class="card amateur">
+
+                <div class="card-top">
+
+                    <span class="elo">
+                        ♘ CABALLO
+                    </span>
+
+                    <span class="icon">
+                        ♞
+                    </span>
+
+                </div>
+
+                <h3>
+                    El caballo
+                </h3>
+
+                <p class="question">
+                    “¿Dónde está mi salto?”
+                </p>
+
+                <p>
+                    El caballo se mueve formando una L:
+                    dos casillas en una dirección y una en otra.
+                    Es la única pieza que puede saltar sobre otras.
+                </p>
+
+                <div class="thinking">
+
+                    <strong>
+                        Movimiento:
+                    </strong>
+
+                    <span>
+                        Forma de L · Puede saltar piezas
+                    </span>
+
+                </div>
+
+            </article>
+
+
+            <!-- ALFIL -->
+
+            <article class="card club">
+
+                <div class="card-top">
+
+                    <span class="elo">
+                        ♗ ALFIL
+                    </span>
+
+                    <span class="icon">
+                        ♝
+                    </span>
+
+                </div>
+
+                <h3>
+                    El alfil
+                </h3>
+
+                <p class="question">
+                    “¿Qué diagonales controlo?”
+                </p>
+
+                <p>
+                    El alfil se mueve cualquier número de casillas
+                    en diagonal. Cada alfil permanece siempre
+                    en el mismo color de casilla.
+                </p>
+
+                <div class="thinking">
+
+                    <strong>
+                        Movimiento:
+                    </strong>
+
+                    <span>
+                        Diagonales · Varias casillas
+                    </span>
+
+                </div>
+
+            </article>
+
+
+            <!-- TORRE -->
+
+            <article class="card strong">
+
+                <div class="card-top">
+
+                    <span class="elo">
+                        ♖ TORRE
+                    </span>
+
+                    <span class="icon">
+                        ♜
+                    </span>
+
+                </div>
+
+                <h3>
+                    La torre
+                </h3>
+
+                <p class="question">
+                    “¿Qué líneas tengo abiertas?”
+                </p>
+
+                <p>
+                    La torre se mueve horizontal y verticalmente
+                    tantas casillas como estén disponibles.
+                </p>
+
+                <div class="thinking">
+
+                    <strong>
+                        Movimiento:
+                    </strong>
+
+                    <span>
+                        Filas · Columnas · Líneas abiertas
+                    </span>
+
+                </div>
+
+            </article>
+
+
+            <!-- DAMA -->
+
+            <article class="card expert">
+
+                <div class="card-top">
+
+                    <span class="elo">
+                        ♕ DAMA
+                    </span>
+
+                    <span class="icon">
+                        ♛
+                    </span>
+
+                </div>
+
+                <h3>
+                    La dama
+                </h3>
+
+                <p class="question">
+                    “¿Qué puedo controlar?”
+                </p>
+
+                <p>
+                    La dama combina los movimientos de la torre
+                    y el alfil. Es la pieza de mayor valor material.
+                </p>
+
+                <div class="thinking">
+
+                    <strong>
+                        Movimiento:
+                    </strong>
+
+                    <span>
+                        Horizontal · Vertical · Diagonal
+                    </span>
+
+                </div>
+
+            </article>
+
+
+            <!-- REY -->
+
+            <article class="card master">
+
+                <div class="card-top">
+
+                    <span class="elo">
+                        ♔ REY
+                    </span>
+
+                    <span class="icon">
+                        ♚
+                    </span>
+
+                </div>
+
+                <h3>
+                    El rey
+                </h3>
+
+                <p class="question">
+                    “¿Es segura esta casilla?”
+                </p>
+
+                <p>
+                    El rey se mueve una casilla en cualquier dirección.
+                    Nunca puede colocarse en una casilla controlada
+                    por una pieza enemiga.
+                </p>
+
+                <div class="thinking">
+
+                    <strong>
+                        Movimiento:
+                    </strong>
+
+                    <span>
+                        Una casilla · Todas las direcciones
+                    </span>
+
+                </div>
+
+            </article>
+
+        </div>
+
+    </section>
+
+
+    <!-- =====================================================
+         PRACTICA INTERACTIVA
+    ====================================================== -->
+
+    <section class="game-section" id="practica">
+
+        <div class="section-title">
+
+            <p>PRACTICA INTERACTIVA</p>
+
+            <h2>
+                Aprende moviendo
+                <span>las piezas</span>
+            </h2>
+
+            <p class="game-subtitle">
+
+                Selecciona una pieza del menú y después haz clic
+                sobre el tablero para practicar sus movimientos.
+
+            </p>
+
+        </div>
+
+
+        <!-- SELECTOR -->
+
+        <div class="comparison-grid">
+
+            <div class="comparison-box highlighted">
+
+                <div class="big-icon">
+                    ♙
+                </div>
+
+                <h3>
+                    Peón
+                </h3>
+
+                <p>
+                    Practica el movimiento del peón.
+                </p>
+
+                <button
+                    type="button"
+                    class="game-button practice-piece-button"
+                    data-piece="pawn">
+
+                    Practicar ♙
+
+                </button>
+
+            </div>
+
+
+            <div class="comparison-box">
+
+                <div class="big-icon">
+                    ♞
+                </div>
+
+                <h3>
+                    Caballo
+                </h3>
+
+                <p>
+                    Practica el salto del caballo.
+                </p>
+
+                <button
+                    type="button"
+                    class="game-button practice-piece-button"
+                    data-piece="knight">
+
+                    Practicar ♞
+
+                </button>
+
+            </div>
+
+
+            <div class="comparison-box">
+
+                <div class="big-icon">
+                    ♗
+                </div>
+
+                <h3>
+                    Alfil
+                </h3>
+
+                <p>
+                    Practica sus diagonales.
+                </p>
+
+                <button
+                    type="button"
+                    class="game-button practice-piece-button"
+                    data-piece="bishop">
+
+                    Practicar ♗
+
+                </button>
+
+            </div>
+
+
+            <div class="comparison-box">
+
+                <div class="big-icon">
+                    ♖
+                </div>
+
+                <h3>
+                    Torre
+                </h3>
+
+                <p>
+                    Practica filas y columnas.
+                </p>
+
+                <button
+                    type="button"
+                    class="game-button practice-piece-button"
+                    data-piece="rook">
+
+                    Practicar ♖
+
+                </button>
+
+            </div>
+
+
+            <div class="comparison-box">
+
+                <div class="big-icon">
+                    ♕
+                </div>
+
+                <h3>
+                    Dama
+                </h3>
+
+                <p>
+                    Practica todos sus movimientos.
+                </p>
+
+                <button
+                    type="button"
+                    class="game-button practice-piece-button"
+                    data-piece="queen">
+
+                    Practicar ♕
+
+                </button>
+
+            </div>
+
+
+            <div class="comparison-box">
+
+                <div class="big-icon">
+                    ♔
+                </div>
+
+                <h3>
+                    Rey
+                </h3>
+
+                <p>
+                    Practica el movimiento del rey.
+                </p>
+
+                <button
+                    type="button"
+                    class="game-button practice-piece-button"
+                    data-piece="king">
+
+                    Practicar ♔
+
+                </button>
+
+            </div>
+
+        </div>
+
+
+        <!-- TABLERO DE PRACTICA -->
+
+        <div class="game-wrapper"
+             style="margin-top:50px;">
+
+            <div class="game-board-container">
+
+                <div
+                    id="practice-board"
+                    class="game-board">
+                </div>
+
+            </div>
+
+
+            <div class="game-panel">
+
+                <div class="game-status">
+
+                    <span>
+                        PIEZA SELECCIONADA
+                    </span>
+
+                    <h3 id="practice-piece-name">
+                        Peón
+                    </h3>
+
+                    <p id="practice-instruction">
+
+                        Haz clic en una casilla para mover
+                        la pieza.
+
+                    </p>
+
+                </div>
+
+
+                <button
+                    type="button"
+                    id="practice-white"
+                    class="game-button">
+
+                    ⚪ Practicar con blancas
+
+                </button>
+
+
+                <button
+                    type="button"
+                    id="practice-black"
+                    class="game-button secondary">
+
+                    ⚫ Practicar con negras
+
+                </button>
+
+
+                <button
+                    type="button"
+                    id="practice-reset"
+                    class="game-button secondary">
+
+                    ↩ Reiniciar tablero
+
+                </button>
+
+
+                <div class="move-history">
+
+                    <h3>
+                        ¿Cómo funciona?
+                    </h3>
+
+                    <p
+                        id="practice-explanation"
+                        style="color:#b9a9ca; font-size:14px;">
+
+                        Los puntos del tablero muestran las casillas
+                        a las que puede moverse la pieza.
+
+                    </p>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- =====================================================
+         REGLAS BASICAS
+    ====================================================== -->
+
+    <section class="comparison">
+
+        <div class="section-title">
+
+            <p>REGLAS BÁSICAS</p>
+
+            <h2>
+                Cosas que debes conocer
+                <span>antes de jugar</span>
+            </h2>
+
+        </div>
+
+
+        <div class="comparison-grid">
+
+            <div class="comparison-box">
+
+                <div class="big-icon">
+                    ♙
+                </div>
+
+                <h3>
+                    Turnos
+                </h3>
+
+                <p>
+                    Las blancas comienzan.
+                </p>
+
+                <ul>
+
+                    <li>Después juega negras.</li>
+
+                    <li>Los jugadores se alternan.</li>
+
+                    <li>No puedes pasar voluntariamente.</li>
+
+                </ul>
+
+            </div>
+
+
+            <div class="comparison-box highlighted">
+
+                <div class="big-icon">
+                    ♚
+                </div>
+
+                <h3>
+                    Jaque
+                </h3>
+
+                <p>
+                    Tu rey está siendo atacado.
+                </p>
+
+                <ul>
+
+                    <li>Debes responder al jaque.</li>
+
+                    <li>Puedes mover el rey.</li>
+
+                    <li>Puedes bloquear el ataque.</li>
+
+                    <li>Puedes capturar la pieza atacante.</li>
+
+                </ul>
+
+            </div>
+
+
+            <div class="comparison-box">
+
+                <div class="big-icon">
+                    ♛
+                </div>
+
+                <h3>
+                    Jaque mate
+                </h3>
+
+                <p>
+                    El rey no puede escapar.
+                </p>
+
+                <ul>
+
+                    <li>El rey está en jaque.</li>
+
+                    <li>No existe ninguna respuesta legal.</li>
+
+                    <li>La partida termina.</li>
+
+                </ul>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- =====================================================
+         MOVIMIENTOS ESPECIALES
+    ====================================================== -->
+
+    <section class="levels">
+
+        <div class="section-title">
+
+            <p>MOVIMIENTOS ESPECIALES</p>
+
+            <h2>
+                Algunas reglas que hacen
+                <span>especial al ajedrez</span>
+            </h2>
+
+        </div>
+
+
+        <div class="cards">
+
+            <article class="card beginner">
+
+                <div class="card-top">
+
+                    <span class="elo">
+                        ♔ ENROQUE
+                    </span>
+
+                    <span class="icon">
+                        ♔
+                    </span>
+
+                </div>
+
+                <h3>
+                    El enroque
+                </h3>
+
+                <p class="question">
+                    “¿Puedo proteger mi rey?”
+                </p>
+
+                <p>
+                    Es un movimiento especial que involucra al rey
+                    y una torre. Sirve normalmente para poner al rey
+                    en una posición más segura.
+                </p>
+
+            </article>
+
+
+            <article class="card amateur">
+
+                <div class="card-top">
+
+                    <span class="elo">
+                        ♟ CORONACIÓN
+                    </span>
+
+                    <span class="icon">
+                        ♛
+                    </span>
+
+                </div>
+
+                <h3>
+                    Coronación
+                </h3>
+
+                <p class="question">
+                    “¿Llegué al otro lado?”
+                </p>
+
+                <p>
+                    Cuando un peón llega a la última fila puede
+                    transformarse normalmente en dama, torre,
+                    alfil o caballo.
+                </p>
+
+            </article>
+
+
+            <article class="card club">
+
+                <div class="card-top">
+
+                    <span class="elo">
+                        ♟ CAPTURA ESPECIAL
+                    </span>
+
+                    <span class="icon">
+                        ♟
+                    </span>
+
+                </div>
+
+                <h3>
+                    Captura al paso
+                </h3>
+
+                <p class="question">
+                    “¿Existe una captura especial?”
+                </p>
+
+                <p>
+                    Es una captura especial de peones que puede
+                    producirse después de un avance inicial de dos
+                    casillas.
+                </p>
+
+            </article>
+
+        </div>
+
+    </section>
+
+
+    <!-- =====================================================
+         NIVELES ELO
+    ====================================================== -->
+
+    <section class="levels" id="niveles">
+
+        <div class="section-title">
+
+            <p>ESCALA DE FUERZA</p>
+
+            <h2>
+                Niveles de ajedrez según el
+                <span>Elo</span>
+            </h2>
+
+        </div>
+
+
+        <div class="cards">
+
+            <article class="card beginner">
+
+                <div class="card-top">
+                    <span class="elo">1000 – 1399</span>
+                    <span class="icon">♟</span>
+                </div>
+
+                <h3>
+                    Principiante
+                </h3>
+
+                <p class="question">
+                    “¿Puedo capturar esa pieza?”
+                </p>
+
+                <p>
+                    Conoce las reglas básicas, pero todavía puede
+                    cometer errores frecuentes como dejar piezas
+                    sin defensa.
+                </p>
+
+                <div class="thinking">
+
+                    <strong>
+                        Su pensamiento:
+                    </strong>
+
+                    <span>
+                        Capturas · Amenazas · Seguridad del rey
+                    </span>
+
+                </div>
+
+            </article>
+
+
+            <article class="card amateur">
+
+                <div class="card-top">
+                    <span class="elo">1400 – 1599</span>
+                    <span class="icon">♞</span>
+                </div>
+
+                <h3>
+                    Aficionado
+                </h3>
+
+                <p class="question">
+                    “¿Qué amenaza mi rival?”
+                </p>
+
+                <p>
+                    Empieza a reconocer patrones tácticos y entiende
+                    mejor la importancia de desarrollar sus piezas.
+                </p>
+
+                <div class="thinking">
+
+                    <strong>
+                        Su pensamiento:
+                    </strong>
+
+                    <span>
+                        Táctica · Desarrollo · Amenazas
+                    </span>
+
+                </div>
+
+            </article>
+
+
+            <article class="card club">
+
+                <div class="card-top">
+                    <span class="elo">1600 – 1799</span>
+                    <span class="icon">♝</span>
+                </div>
+
+                <h3>
+                    Jugador de club medio
+                </h3>
+
+                <p class="question">
+                    “¿Cuál es mi plan?”
+                </p>
+
+                <p>
+                    Comienza a comprender estructuras de peones,
+                    casillas importantes y planes estratégicos.
+                </p>
+
+                <div class="thinking">
+
+                    <strong>
+                        Su pensamiento:
+                    </strong>
+
+                    <span>
+                        Planes · Estrategia · Estructuras
+                    </span>
+
+                </div>
+
+            </article>
+
+
+            <article class="card strong">
+
+                <div class="card-top">
+                    <span class="elo">1800 – 1999</span>
+                    <span class="icon">♜</span>
+                </div>
+
+                <h3>
+                    Jugador de club fuerte
+                </h3>
+
+                <p class="question">
+                    “¿Qué posición obtendré después?”
+                </p>
+
+                <p>
+                    Calcula variantes con mayor precisión y combina
+                    conceptos tácticos con comprensión posicional.
+                </p>
+
+                <div class="thinking">
+
+                    <strong>
+                        Su pensamiento:
+                    </strong>
+
+                    <span>
+                        Cálculo · Posición · Iniciativa
+                    </span>
+
+                </div>
+
+            </article>
+
+
+            <article class="card expert">
+
+                <div class="card-top">
+                    <span class="elo">2000 – 2199</span>
+                    <span class="icon">♛</span>
+                </div>
+
+                <h3>
+                    Experto / Candidato a Maestro
+                </h3>
+
+                <p class="question">
+                    “¿Cuál es la continuación más precisa?”
+                </p>
+
+                <p>
+                    Analiza posiciones complejas, calcula variantes
+                    y busca recursos concretos.
+                </p>
+
+                <div class="thinking">
+
+                    <strong>
+                        Su pensamiento:
+                    </strong>
+
+                    <span>
+                        Precisión · Cálculo · Preparación
+                    </span>
+
+                </div>
+
+            </article>
+
+
+            <article class="card master">
+
+                <div class="card-top">
+                    <span class="elo">2200 – 2299</span>
+                    <span class="icon">♚</span>
+                </div>
+
+                <h3>
+                    Nivel de maestro
+                </h3>
+
+                <p class="question">
+                    “¿Qué exige objetivamente la posición?”
+                </p>
+
+                <p>
+                    Combina cálculo preciso con una comprensión
+                    avanzada de la estrategia y la táctica.
+                </p>
+
+                <div class="thinking">
+
+                    <strong>
+                        Su pensamiento:
+                    </strong>
+
+                    <span>
+                        Evaluación · Cálculo · Técnica
+                    </span>
+
+                </div>
+
+            </article>
+
+
+            <article class="card grandmaster">
+
+                <div class="card-top">
+                    <span class="elo">2300+</span>
+                    <span class="icon">👑</span>
+                </div>
+
+                <h3>
+                    Gran Maestro
+                </h3>
+
+                <p class="question">
+                    “¿Qué recursos tiene la posición?”
+                </p>
+
+                <p>
+                    Combina cálculo profundo, reconocimiento de
+                    patrones, preparación, experiencia y comprensión
+                    estratégica.
+                </p>
+
+                <div class="thinking">
+
+                    <strong>
+                        Su pensamiento:
+                    </strong>
+
+                    <span>
+                        Patrones · Cálculo · Estrategia
+                    </span>
+
+                </div>
+
+            </article>
+
+        </div>
+
+    </section>
+
+
+    <!-- =====================================================
+         JUEGO CONTRA STOCKFISH
+    ====================================================== -->
+
+    <section class="game-section" id="jugar">
+
+        <div class="section-title">
+
+            <p>PON A PRUEBA TU PENSAMIENTO</p>
+
+            <h2>
+                Juega una partida de
+                <span>ajedrez</span>
+            </h2>
+
+            <p class="game-subtitle">
+                Tú juegas con blancas. La IA juega con negras.
+            </p>
+
+        </div>
+
+
+        <div class="game-wrapper">
+
+            <div class="game-board-container">
+
+                <div
+                    id="game-board"
+                    class="game-board">
+                </div>
+
+            </div>
+
+
+            <div class="game-panel">
+
+                <div class="game-status">
+
+                    <span>
+                        PARTIDA
+                    </span>
+
+                    <h3 id="game-status">
+                        Tu turno
+                    </h3>
+
+                    <p id="thinking-status">
+                        Selecciona una pieza blanca.
+                    </p>
+
+                </div>
+
+
+                <label for="difficulty">
+                    Nivel de la IA
+                </label>
+
+
+                <select id="difficulty">
+
+                    <option value="6">
+                        ♟ Fácil
+                    </option>
+
+                    <option value="10">
+                        ♞ Medio
+                    </option>
+
+                    <option value="14" selected>
+                        ♛ Difícil
+                    </option>
+
+                    <option value="18">
+                        👑 Experto
+                    </option>
+
+                </select>
+
+
+                <button
+                    type="button"
+                    id="new-game"
+                    class="game-button">
+
+                    ♟ Nueva partida
+
+                </button>
+
+
+                <button
+                    type="button"
+                    id="undo-move"
+                    class="game-button secondary">
+
+                    ↩ Deshacer
+
+                </button>
+
+
+                <div class="move-history">
+
+                    <h3>
+                        Movimientos
+                    </h3>
+
+                    <ol id="move-list"></ol>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- =====================================================
+         COMPARACIÓN DEL PENSAMIENTO
+    ====================================================== -->
+
+    <section class="comparison" id="comparacion">
+
+        <div class="section-title">
+
+            <p>TRES FORMAS DE PENSAR</p>
+
+            <h2>
+                Promedio, experto y
+                <span>Gran Maestro</span>
+            </h2>
+
+        </div>
+
+
+        <div class="comparison-grid">
+
+            <div class="comparison-box">
+
+                <div class="big-icon">
+                    ♟
+                </div>
+
+                <h3>
+                    Jugador promedio
+                </h3>
+
+                <p>
+                    “¿Qué puedo hacer ahora?”
+                </p>
+
+                <ul>
+
+                    <li>
+                        Busca capturas.
+                    </li>
+
+                    <li>
+                        Detecta amenazas inmediatas.
+                    </li>
+
+                    <li>
+                        Calcula pocas variantes.
+                    </li>
+
+                    <li>
+                        Puede pasar por alto recursos defensivos.
+                    </li>
+
+                </ul>
+
+            </div>
+
+
+            <div class="comparison-box highlighted">
+
+                <div class="big-icon">
+                    ♞
+                </div>
+
+                <h3>
+                    Jugador experto
+                </h3>
+
+                <p>
+                    “¿Qué plan me da mejores posibilidades?”
+                </p>
+
+                <ul>
+
+                    <li>
+                        Compara diferentes candidatos.
+                    </li>
+
+                    <li>
+                        Calcula variantes concretas.
+                    </li>
+
+                    <li>
+                        Evalúa estructuras de peones.
+                    </li>
+
+                    <li>
+                        Busca planes a medio plazo.
+                    </li>
+
+                </ul>
+
+            </div>
+
+
+            <div class="comparison-box">
+
+                <div class="big-icon">
+                    ♚
+                </div>
+
+                <h3>
+                    Gran Maestro
+                </h3>
+
+                <p>
+                    “¿Cuál es la esencia de esta posición?”
+                </p>
+
+                <ul>
+
+                    <li>
+                        Reconoce patrones rápidamente.
+                    </li>
+
+                    <li>
+                        Calcula variantes críticas.
+                    </li>
+
+                    <li>
+                        Evalúa recursos tácticos y estratégicos.
+                    </li>
+
+                    <li>
+                        Encuentra planes extremadamente precisos.
+                    </li>
+
+                </ul>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- =====================================================
+         FRASE
+    ====================================================== -->
+
+    <section class="quote">
+
+        <div>
+
+            <span>
+                ♜
+            </span>
+
+            <h2>
+
+                “La fuerza de un ajedrecista no está solamente
+                en saber qué mover, sino en comprender
+                <em>por qué</em>.”
+
+            </h2>
+
+        </div>
+
+    </section>
+
+
+    <!-- =====================================================
+         CONTRASEÑAS
+    ====================================================== -->
+
+    <section class="rating-section" id="contraseñas">
+
+        <div class="section-title">
+
+            <p>
+                APARTADO ESPECIAL
+            </p>
+
+            <h2>
+                Acceso por
+                <span>contraseña</span>
+            </h2>
+
+            <p class="rating-description">
+
+                Introduce una contraseña secreta para identificar al usuario
+                y recibir su mensaje personalizado.
+
+            </p>
+
+        </div>
+
+
+        <div class="rating-card">
+
+            <div
+                class="rating-number"
+                id="password-icon">
+
+                🔐
+
+            </div>
+
+
+            <p>
+                Escribe la contraseña secreta del usuario:
+            </p>
+
+
+            <input
+                type="password"
+                id="password-input"
+                placeholder="Contraseña"
+                autocomplete="off"
+                style="
+                    width:100%;
+                    max-width:450px;
+                    padding:14px;
+                    border-radius:10px;
+                    border:1px solid #54346e;
+                    background:#1b1027;
+                    color:white;
+                    outline:none;
+                    margin-bottom:12px;
+                    font-size:16px;
+                ">
+
+
+            <button
+                type="button"
+                id="password-button"
+                class="game-button"
+                style="max-width:450px;">
+
+                🔓 Entrar
+
+            </button>
+
+
+            <div
+                class="rating-message"
+                id="password-message">
+
+            </div>
+
+
+            <!-- CONTENIDO DE LOS 6 USUARIOS -->
+
+            <div
+                id="password-content"
+                style="
+                    display:none;
+                    margin-top:30px;
+                    text-align:left;
+                ">
+
+                <div
+                    class="comparison-box highlighted">
+
+                    <div class="big-icon">
+                        ♟
+                    </div>
+
+                    <h3 id="password-title">
+                        Apartado
+                    </h3>
+
+                    <p id="password-text">
+                    </p>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- =====================================================
+         AUTOR
+    ====================================================== -->
+
+    <section class="author-section" id="autor">
+
+        <div class="author-card">
+
+            <div class="author-piece">
+                ♞
+            </div>
+
+
+            <div class="author-content">
+
+                <p class="author-label">
+                    SOBRE EL AUTOR
+                </p>
+
+                <h2>
+                    ¿Quién escribe esta página?
+                </h2>
+
+                <p>
+
+                    Quien escribe esta página es
+                    <strong>
+                        Miguel Ivan Cerezo Hernandez
+                    </strong>,
+                    actual campeón del CETIS 3.
+
+                </p>
+
+                <p>
+
+                    He ganado un estatal en la Ciudad de México
+                    y conseguí un trofeo para la escuela.
+
+                </p>
+
+                <p>
+
+                    Y ahora puede que me esté enajenando en mi
+                    teléfono o jugando Roblox con mis amigos diciendo:
+
+                </p>
+
+
+                <div class="roblox-quote">
+
+                    “Eh, vato, ey”
+
+                </div>
+
+
+                <p>
+
+                    Pero ahora estoy aquí programando esta página
+                    porque me gustaría compartir algo que me gusta:
+                    el ajedrez y la forma en que pensamos cuando jugamos.
+
+                </p>
+
+
+                <div class="question-box">
+
+                    <span>
+                        ♟
+                    </span>
+
+                    <strong>
+                        ¿Qué opinas de mi páginaaaaaa?
+                    </strong>
+
+                    <small>
+                        1/10?????
+                    </small>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- =====================================================
+         CALIFICACIÓN
+    ====================================================== -->
+
+    <section
+        class="rating-section"
+        id="calificacion">
+
+        <div class="section-title">
+
+            <p>
+                AHORA TE TOCA A TI
+            </p>
+
+            <h2>
+
+                ¿Qué opinas de mi
+                <span>página?</span>
+
+            </h2>
+
+            <p class="rating-description">
+
+                Califica esta página del 1 al 10.
+
+            </p>
+
+        </div>
+
+
+        <div class="rating-card">
+
+            <div
+                class="rating-number"
+                id="rating-number">
+
+                —
+
+            </div>
+
+
+            <p>
+                Selecciona una calificación:
+            </p>
+
+
+            <div class="rating-buttons">
+
+                <button data-rating="1">1</button>
+
+                <button data-rating="2">2</button>
+
+                <button data-rating="3">3</button>
+
+                <button data-rating="4">4</button>
+
+                <button data-rating="5">5</button>
+
+                <button data-rating="6">6</button>
+
+                <button data-rating="7">7</button>
+
+                <button data-rating="8">8</button>
+
+                <button data-rating="9">9</button>
+
+                <button data-rating="10">10</button>
+
+            </div>
+
+
+            <div
+                class="rating-message"
+                id="rating-message">
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- =====================================================
+         CONCLUSIÓN
+    ====================================================== -->
+
+    <section class="conclusion">
+
+        <div class="section-title">
+
+            <p>
+                EN RESUMEN
+            </p>
+
+            <h2>
+
+                El tablero cambia cuando
+                <span>
+                    cambia tu forma de pensar
+                </span>
+
+            </h2>
+
+        </div>
+
+        <p>
+
+            El progreso en ajedrez no consiste únicamente en aumentar
+            el Elo. También implica aprender a observar más información,
+            calcular con mayor precisión, reconocer patrones y construir
+            planes.
+
+        </p>
+
+    </section>
+
+
+    <!-- =====================================================
+         FOOTER
+    ====================================================== -->
+
+    <footer>
+
+        <div class="footer-logo">
+
+            ♞ Pensamiento Ajedrecístico
+
+        </div>
+
+        <p>
+
+            Una exploración de la evolución del pensamiento en el ajedrez.
+
+        </p>
+
+        <small>
+
+            Los rangos de Elo son aproximados y no equivalen automáticamente
+            a títulos oficiales.
+
+        </small>
+
+    </footer>
+
+
+    <!-- =====================================================
+         STOCKFISH
+    ====================================================== -->
+
+    <script src="https://cdn.jsdelivr.net/npm/stockfish.js@10.0.2/stockfish.min.js"></script>
+
+
+    <!-- =====================================================
+         JAVASCRIPT PRINCIPAL
+    ====================================================== -->
+
+    <script src="script.js"></script>
+
+
+    <!-- =====================================================
+         APRENDIZAJE INTERACTIVO
+    ====================================================== -->
+
+    <script>
+
+        /* =================================================
+           CONFIGURACIÓN
+        ================================================= */
+
+        const practiceBoard =
+            document.getElementById("practice-board");
+
+        const practicePieceName =
+            document.getElementById("practice-piece-name");
+
+        const practiceInstruction =
+            document.getElementById("practice-instruction");
+
+        const practiceExplanation =
+            document.getElementById("practice-explanation");
+
+
+        let practicePiece = "pawn";
+
+        let practiceColor = "w";
+
+        let practicePosition = "d4";
+
+
+        const practicePieces = {
+
+            pawn: {
+                w: "♙",
+                b: "♟"
+            },
+
+            knight: {
+                w: "♘",
+                b: "♞"
+            },
+
+            bishop: {
+                w: "♗",
+                b: "♝"
+            },
+
+            rook: {
+                w: "♖",
+                b: "♜"
+            },
+
+            queen: {
+                w: "♕",
+                b: "♛"
+            },
+
+            king: {
+                w: "♔",
+                b: "♚"
+            }
+
+        };
+
+
+        const practiceNames = {
+
+            pawn: "Peón",
+
+            knight: "Caballo",
+
+            bishop: "Alfil",
+
+            rook: "Torre",
+
+            queen: "Dama",
+
+            king: "Rey"
+
+        };
+
+
+        /* =================================================
+           CREAR TABLERO DE PRACTICA
+        ================================================= */
+
+        function renderPracticeBoard() {
+
+            practiceBoard.innerHTML = "";
+
+
+            for (
+                let row = 0;
+                row < 8;
+                row++
+            ) {
+
+                for (
+                    let col = 0;
+                    col < 8;
+                    col++
+                ) {
+
+                    const square =
+                        document.createElement("div");
+
+
+                    const file =
+                        String.fromCharCode(
+                            97 + col
+                        );
+
+
+                    const rank =
+                        8 - row;
+
+
+                    const squareName =
+                        file + rank;
+
+
+                    square.dataset.square =
+                        squareName;
+
+
+                    square.classList.add(
+                        "game-square"
+                    );
+
+
+                    if (
+                        (row + col) % 2 === 0
+                    ) {
+
+                        square.classList.add(
+                            "light"
+                        );
+
+                    } else {
+
+                        square.classList.add(
+                            "dark"
+                        );
+
+                    }
+
+
+                    /*
+                       PIEZA
+                    */
+
+                    if (
+                        squareName ===
+                        practicePosition
+                    ) {
+
+                        square.textContent =
+                            practicePieces[
+                                practicePiece
+                            ][
+                                practiceColor
+                            ];
+
+
+                        if (
+                            practiceColor === "w"
+                        ) {
+
+                            square.classList.add(
+                                "white-piece"
+                            );
+
+                        } else {
+
+                            square.classList.add(
+                                "black-piece"
+                            );
+
+                        }
+
+                    }
+
+
+                    /*
+                       MOVIMIENTOS LEGALES
+                    */
+
+                    if (
+                        isPracticeMoveLegal(
+                            practicePosition,
+                            squareName,
+                            practicePiece
+                        )
+                    ) {
+
+                        square.classList.add(
+                            "legal"
+                        );
+
+                    }
+
+
+                    /*
+                       CLICK
+                    */
+
+                    square.addEventListener(
+                        "click",
+                        function() {
+
+                            handlePracticeClick(
+                                squareName
+                            );
+
+                        }
+                    );
+
+
+                    practiceBoard.appendChild(
+                        square
+                    );
+
+                }
+
+            }
+
+        }
+
+
+        /* =================================================
+           CONVERTIR CASILLA
+        ================================================= */
+
+        function squareToCoordinates(square) {
+
+            return {
+
+                x:
+                    square.charCodeAt(0) - 97,
+
+                y:
+                    Number(
+                        square[1]
+                    ) - 1
+
+            };
+
+        }
+
+
+        /* =================================================
+           COMPROBAR MOVIMIENTO
+        ================================================= */
+
+        function isPracticeMoveLegal(
+            from,
+            to,
+            piece
+        ) {
+
+            if (
+                from === to
+            ) {
+
+                return false;
+
+            }
+
+
+            const start =
+                squareToCoordinates(
+                    from
+                );
+
+
+            const end =
+                squareToCoordinates(
+                    to
+                );
+
+
+            const dx =
+                Math.abs(
+                    end.x - start.x
+                );
+
+
+            const dy =
+                Math.abs(
+                    end.y - start.y
+                );
+
+
+            /*
+               PEON
+            */
+
+            if (
+                piece === "pawn"
+            ) {
+
+                const direction =
+                    practiceColor === "w"
+                        ? 1
+                        : -1;
+
+
+                /*
+                   Una casilla
+                */
+
+                if (
+                    dx === 0 &&
+                    end.y - start.y === direction
+                ) {
+
+                    return true;
+
+                }
+
+
+                /*
+                   Dos casillas desde posición inicial
+                */
+
+                const startingRank =
+                    practiceColor === "w"
+                        ? 2
+                        : 7;
+
+
+                if (
+                    dx === 0 &&
+                    start.y === startingRank - 1 &&
+                    end.y - start.y === direction * 2
+                ) {
+
+                    return true;
+
+                }
+
+
+                /*
+                   Captura diagonal
+                   Se muestra como posibilidad
+                   de aprendizaje.
+                */
+
+                if (
+                    dx === 1 &&
+                    end.y - start.y === direction
+                ) {
+
+                    return true;
+
+                }
+
+
+                return false;
+
+            }
+
+
+            /*
+               CABALLO
+            */
+
+            if (
+                piece === "knight"
+            ) {
+
+                return (
+                    (dx === 1 && dy === 2) ||
+                    (dx === 2 && dy === 1)
+                );
+
+            }
+
+
+            /*
+               ALFIL
+            */
+
+            if (
+                piece === "bishop"
+            ) {
+
+                return (
+                    dx === dy
+                );
+
+            }
+
+
+            /*
+               TORRE
+            */
+
+            if (
+                piece === "rook"
+            ) {
+
+                return (
+                    dx === 0 ||
+                    dy === 0
+                );
+
+            }
+
+
+            /*
+               DAMA
+            */
+
+            if (
+                piece === "queen"
+            ) {
+
+                return (
+                    dx === 0 ||
+                    dy === 0 ||
+                    dx === dy
+                );
+
+            }
+
+
+            /*
+               REY
+            */
+
+            if (
+                piece === "king"
+            ) {
+
+                return (
+                    dx <= 1 &&
+                    dy <= 1
+                );
+
+            }
+
+
+            return false;
+
+        }
+
+
+        /* =================================================
+           CLICK EN PRACTICA
+        ================================================= */
+
+        function handlePracticeClick(
+            square
+        ) {
+
+            if (
+                isPracticeMoveLegal(
+                    practicePosition,
+                    square,
+                    practicePiece
+                )
+            ) {
+
+                practicePosition =
+                    square;
+
+
+                practiceInstruction.textContent =
+                    "¡Movimiento correcto! Prueba otra casilla.";
+
+
+                renderPracticeBoard();
+
+            } else {
+
+                if (
+                    square === practicePosition
+                ) {
+
+                    practiceInstruction.textContent =
+                        "Esta es la pieza. Busca las casillas marcadas.";
+
+                } else {
+
+                    practiceInstruction.textContent =
+                        "Esa casilla no corresponde al movimiento de esta pieza.";
+
+                }
+
+            }
+
+        }
+
+
+        /* =================================================
+           CAMBIAR PIEZA
+        ================================================= */
+
+        const practiceButtons =
+            document.querySelectorAll(
+                ".practice-piece-button"
+            );
+
+
+        practiceButtons.forEach(
+            function(button) {
+
+                button.addEventListener(
+                    "click",
+                    function() {
+
+                        practicePiece =
+                            button.dataset.piece;
+
+
+                        practicePosition =
+                            "d4";
+
+
+                        practicePieceName.textContent =
+                            practiceNames[
+                                practicePiece
+                            ];
+
+
+                        updatePracticeExplanation();
+
+
+                        practiceInstruction.textContent =
+                            "Las casillas moradas marcadas muestran dónde puede moverse.";
+
+
+                        renderPracticeBoard();
+
+                    }
+                );
+
+            }
+        );
+
+
+        /* =================================================
+           CAMBIAR COLOR
+        ================================================= */
+
+        document
+            .getElementById("practice-white")
+            .addEventListener(
+                "click",
+                function() {
+
+                    practiceColor = "w";
+
+                    practicePosition = "d4";
+
+                    practiceInstruction.textContent =
+                        "Ahora estás practicando con blancas.";
+
+                    renderPracticeBoard();
+
+                }
+            );
+
+
+        document
+            .getElementById("practice-black")
+            .addEventListener(
+                "click",
+                function() {
+
+                    practiceColor = "b";
+
+                    practicePosition = "d5";
+
+                    practiceInstruction.textContent =
+                        "Ahora estás practicando con negras.";
+
+                    renderPracticeBoard();
+
+                }
+            );
+
+
+        /* =================================================
+           REINICIAR
+        ================================================= */
+
+        document
+            .getElementById("practice-reset")
+            .addEventListener(
+                "click",
+                function() {
+
+                    practicePosition =
+                        practiceColor === "w"
+                            ? "d4"
+                            : "d5";
+
+
+                    practiceInstruction.textContent =
+                        "Tablero reiniciado. Prueba los movimientos.";
+
+                    renderPracticeBoard();
+
+                }
+            );
+
+
+        /* =================================================
+           EXPLICACIONES
+        ================================================= */
+
+        function updatePracticeExplanation() {
+
+            const explanations = {
+
+                pawn:
+                    "El peón avanza hacia adelante y captura en diagonal. Desde su posición inicial puede avanzar dos casillas.",
+
+                knight:
+                    "El caballo se mueve en forma de L: dos casillas en una dirección y una en otra. Puede saltar piezas.",
+
+                bishop:
+                    "El alfil se mueve en diagonal tantas casillas como estén disponibles.",
+
+                rook:
+                    "La torre se mueve horizontal o verticalmente tantas casillas como estén disponibles.",
+
+                queen:
+                    "La dama combina el movimiento de la torre y el alfil: puede moverse horizontal, vertical y diagonalmente.",
+
+                king:
+                    "El rey puede moverse una casilla en cualquier dirección. En una partida real no puede moverse a una casilla atacada."
+
+            };
+
+
+            practiceExplanation.textContent =
+                explanations[
+                    practicePiece
+                ];
+
+        }
+
+
+        /* =================================================
+           INICIAR TABLERO
+        ================================================= */
+
+        updatePracticeExplanation();
+
+        renderPracticeBoard();
+
+
+        /* =================================================
+           CONTRASEÑAS
+        ================================================= */
+
+        const passwordInput =
+            document.getElementById(
+                "password-input"
+            );
+
+
+        const passwordButton =
+            document.getElementById(
+                "password-button"
+            );
+
+
+        const passwordMessage =
+            document.getElementById(
+                "password-message"
+            );
+
+
+        const passwordContent =
+            document.getElementById(
+                "password-content"
+            );
+
+
+        const passwordTitle =
+            document.getElementById(
+                "password-title"
+            );
+
+
+        const passwordText =
+            document.getElementById(
+                "password-text"
+            );
+
+
+        /*
+           CAMBIA ESTAS CONTRASEÑAS
+           POR LAS QUE TÚ QUIERAS.
+        */
+
+        const passwords = {
+
+            "caballo-01": {
+                title: "Usuario 1 · El estratega",
+                text: "Cada movimiento revela una parte de tu estrategia. Piensa con calma y sorprende al tablero."
+            },
+
+            "torre-02": {
+                title: "Usuario 2 · El paciente",
+                text: "La paciencia también es una forma de inteligencia. No te apresures: busca la mejor jugada."
+            },
+
+            "alfil-03": {
+                title: "Usuario 3 · El observador",
+                text: "Observa las diagonales: siempre existe otra posibilidad. Mira más allá de la jugada evidente."
+            },
+
+            "reina-04": {
+                title: "Usuario 4 · El líder",
+                text: "El poder de una jugada está en saber cuándo realizarla. Coordina tus piezas y crea oportunidades."
+            },
+
+            "rey-05": {
+                title: "Usuario 5 · El defensor",
+                text: "Protege tu posición y piensa antes de actuar. Una defensa sólida también puede ganar partidas."
+            },
+
+            "peon-06": {
+                title: "Usuario 6 · El perseverante",
+                text: "Un pequeño avance puede cambiar toda la partida. Sigue aprendiendo: cada movimiento cuenta."
+            }
+
+        };
+
+
+        /* =================================================
+           COMPROBAR CONTRASEÑA
+        ================================================= */
+
+        function checkPassword() {
+
+            const value =
+                passwordInput.value
+                    .trim()
+                    .toLowerCase();
+
+
+            const result =
+                passwords[value];
+
+
+            if (result) {
+
+                passwordMessage.textContent =
+                    "✓ Contraseña correcta.";
+
+
+                passwordMessage.className =
+                    "rating-message good";
+
+
+                passwordTitle.textContent =
+                    result.title;
+
+
+                passwordText.textContent =
+                    result.text;
+
+
+                passwordContent.style.display =
+                    "block";
+
+                // El bot muestra el mensaje personalizado.
+                if (typeof showBotPhrase === "function") {
+                    showBotPhrase(result.text);
+                }
+
+                // La computadora lee el mensaje en voz alta si el navegador lo permite.
+                if (typeof speakBotPhrase === "function") {
+                    speakBotPhrase(result.title + ". " + result.text);
+                } else if ("speechSynthesis" in window) {
+                    window.speechSynthesis.cancel();
+                    const speech = new SpeechSynthesisUtterance(
+                        result.title + ". " + result.text
+                    );
+                    speech.lang = "es-MX";
+                    window.speechSynthesis.speak(speech);
+                }
+
+            } else {
+
+                passwordMessage.textContent =
+                    "✕ Contraseña incorrecta.";
+
+
+                passwordMessage.className =
+                    "rating-message normal";
+
+
+                passwordContent.style.display =
+                    "none";
+
+                if ("speechSynthesis" in window) {
+                    window.speechSynthesis.cancel();
+                }
+
+            }
+
+            passwordInput.value = "";
+
+        }
+
+
+        passwordButton.addEventListener(
+            "click",
+            checkPassword
+        );
+
+
+        passwordInput.addEventListener(
+            "keydown",
+            function(event) {
+
+                if (
+                    event.key === "Enter"
+                ) {
+
+                    checkPassword();
+
+                }
+
+            }
+        );
+
+    </script>
+
+</body>
+
+</html>
